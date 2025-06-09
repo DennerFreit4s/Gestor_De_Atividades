@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Minhas Atividades</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="top-bar">
+    <h1>Minhas Atividades</h1>
+    <div class="menu">
+      <a href="creditos.html">Créditos</a>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Botão flutuante -->
+    <button id="btnNovaAtividade" class="fab" onclick="abrirModal()">+</button>
+
+    <!-- Modal de nova atividade -->
+    <div id="modalAtividade" class="modal hidden">
+    <div class="modal-content">
+        <h2>Nova Atividade</h2>
+        <form id="formAtividade">
+        <input type="text" name="title" placeholder="Título" required />
+        <textarea name="description" placeholder="Descrição"></textarea>
+        <input type="date" name="due_date" required />
+        <button type="submit">Salvar</button>
+        </form>
+        <button class="fechar-modal" onclick="fecharModal()">Cancelar</button>
+    </div>
+    </div>
+
+    <div id="cardsContainer" class="cards">
+      <!-- Cards de atividades serão inseridos aqui -->
+    </div>
+  </main>
+
+  <script src="js/home.js"></script>
+</body>
+</html>

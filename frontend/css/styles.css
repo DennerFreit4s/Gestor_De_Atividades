@@ -1,0 +1,330 @@
+:root {
+  --rosa-principal: #c2185b;
+  --rosa-escuro: #ad1457;
+  --roxo-principal: #8e24aa;
+  --roxo-escuro: #6a1b9a;
+  --destaque-amarelo: #fbc02d;
+  --destaque-vermelho: #e53935;
+  --destaque-verde: #43a047;
+  --fundo-gradiente: linear-gradient(135deg, #f9c5d1, #fbc2eb);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--fundo-gradiente);
+  min-height: 100vh;
+}
+
+/* =================== LOGIN / REGISTER =================== */
+
+.login-container, .register-container {
+  background-color: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+  margin: 5vh auto;
+  text-align: center;
+}
+
+h2 {
+  color: var(--rosa-principal);
+  margin-bottom: 1.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+input:focus {
+  border-color: var(--rosa-principal);
+  outline: none;
+}
+
+button {
+  background-color: var(--rosa-principal);
+  color: white;
+  border: none;
+  padding: 0.9rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: var(--rosa-escuro);
+}
+
+p {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+a {
+  color: var(--rosa-principal);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* =================== LAYOUT PRINCIPAL =================== */
+
+.top-bar {
+  background-color: var(--rosa-principal);
+  color: white;
+  padding: 0.5rem 1.5rem; /* menos padding vertical para ser menor */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* sombra leve para separar do conteúdo */
+  font-size: 1rem; /* fonte um pouco menor */
+}
+
+.top-bar a,
+.top-bar button {
+  color: white;
+  margin-left: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+
+.main-container {
+  padding: 2rem;
+}
+
+/* =================== AÇÕES E BOTÕES =================== */
+
+.actions {
+  margin-bottom: 1.5rem;
+  text-align: right;
+}
+
+#btnNovaAtividade {
+  background-color: var(--rosa-principal);
+  color: white;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+#btnNovaAtividade:hover {
+  background-color: #a9154f
+}
+
+/* =================== LISTA DE ATIVIDADES =================== */
+
+.atividade-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.atividade-item {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid var(--rosa-principal);
+}
+
+.atividade-item.atrasada {
+  border-left-color: red;
+  background-color: #ffe5e5;
+}
+
+.atividade-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.atividade-actions button {
+  margin-left: 0.5rem;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+}
+
+.atividade-actions .edit {
+  background-color: var(--destaque-amarelo);
+}
+
+.atividade-actions .delete {
+  background-color: var(--destaque-vermelho);
+  color: white;
+}
+
+.atividade-actions .done {
+  background-color: var(--destaque-verde);
+  color: white;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-left: 5px solid #c2185b;
+}
+
+.card.atrasada {
+  border-left-color: red;
+  background-color: #fff1f1;
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.card .meta {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+/* =================== RESPONSIVO =================== */
+
+@media (max-width: 600px) {
+  .top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .top-bar a,
+  .top-bar button {
+    margin: 0.5rem 0 0;
+  }
+
+  .main-container {
+    padding: 1rem;
+  }
+
+  .atividade-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+/* Botão Flutuante */
+.fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  background-color: var(--roxo-principal);
+  color: white;
+  font-size: 2rem;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s;
+}
+
+.fab:hover {
+  background-color: var(--roxo-escuro);
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-content input,
+.modal-content textarea {
+  padding: 0.7rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.modal-content button[type="submit"] {
+  background-color: var(--rosa-principal);
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.fechar-modal {
+  margin-top: 1rem;
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.fechar-modal:hover {
+    color: white;
+}
