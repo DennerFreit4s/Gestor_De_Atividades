@@ -17,6 +17,18 @@ function handle_request()
                 'function' => 'loginUser',
                 'public' => true
             ]
+            ],
+        'tasks' => [
+            'GET' => [
+                'controller' => 'taskController.php',
+                'function' => 'getTasks',
+                'public' => false
+            ],
+            'POST' => [
+                'controller' => 'taskController.php',
+                'function' => 'createTask',
+                'public' => false
+            ]
         ]
     ];
 
