@@ -32,5 +32,27 @@ function validate_birth_date($date) {
 }
 
 function validate_password($password) {
-    return strlen(trim($password)) <= 255;
+    $password = trim($password);
+
+    if (strlen($password) < 8 ) {
+        return false;
+    }
+
+    if (!preg_match('/[A-Z]/', $password)) {
+        return false;
+    }
+
+    if (!preg_match('/[a-z]/', $password)) {
+        return false;
+    }
+
+    if (!preg_match('/[0-9]/', $password)) {
+        return false;
+    }
+
+    if (!preg_match('/[\W_]/', $password)) {
+        return false;
+    }
+
+    return true;
 }

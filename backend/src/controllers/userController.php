@@ -35,7 +35,7 @@ function createUser()
         }
 
         if (!validate_password($data['password'])) {
-            throw new Exception("Senha muito longa. Máximo de 255 caracteres.", 422);
+            throw new Exception("Senha inválida. Ela deve ter no mínimo 8 caracteres, conter ao menos uma letra maiúscula, uma minúscula, um número e um caractere especial.", 422);
         }
 
         createUserService($data);
