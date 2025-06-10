@@ -30,7 +30,7 @@ function createUserService($data)
 }
 
 function loginUserService($username, $password) {
-    $user = findUserByUsername($username);
+    $user = findUserByUsername(trim($username));
     
     if (!$user) {
         throw new Exception("Usuário ou senha incorretos.", 401);
