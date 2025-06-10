@@ -54,11 +54,10 @@ function loginUser() {
         $data = json_decode(file_get_contents('php://input'), true);
 
         if (empty($data['username']) || empty($data['password'])) {
-            http_response_code(400);
-            throw new Exception("Nome de usuário e senha são obrigatórios.");
+            throw new Exception("Nome de usuário e senha são obrigatórios.", 400);
         }
 
-        $result = loginUserService($data['username'], $data['password']);
+        $result = loginUserService(trim($data['username']), trim($data['password']));
 
         http_response_code(200);
         echo json_encode(["data" => $result, "error" => null]);
