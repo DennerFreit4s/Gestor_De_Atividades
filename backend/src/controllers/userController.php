@@ -35,7 +35,7 @@ function createUser()
         }
 
         if (!validate_password($data['password'])) {
-            throw new Exception("Senha muito longa. Máximo de 255 caracteres.", 422);
+            throw new Exception("Senha inválida. Ela deve ter no mínimo 8 caracteres, conter ao menos uma letra maiúscula, uma minúscula, um número e um caractere especial.", 422);
         }
 
         createUserService($data);
@@ -54,11 +54,10 @@ function loginUser() {
         $data = json_decode(file_get_contents('php://input'), true);
 
         if (empty($data['username']) || empty($data['password'])) {
-            http_response_code(400);
-            throw new Exception("Nome de usuário e senha são obrigatórios.");
+            throw new Exception("Nome de usuário e senha são obrigatórios.", 400);
         }
 
-        $result = loginUserService($data['username'], $data['password']);
+        $result = loginUserService(trim($data['username']), trim($data['password']));
 
         http_response_code(200);
         echo json_encode(["data" => $result, "error" => null]);
