@@ -29,3 +29,8 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         alert('Erro ao conectar com o servidor.');
     }
 });
+
+function logout() {
+  localStorage.removeItem("authToken");
+  window.location.href = "login.html";
+}

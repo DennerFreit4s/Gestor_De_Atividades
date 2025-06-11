@@ -4,7 +4,7 @@
 </button>
 
 <!-- Modal de nova atividade -->
-<div id="modalAtividade" class="modal hidden">
+<div id="modal-atividade" class="modal hidden">
 <div class="modal-content">
     <h2>Nova Atividade</h2>
     <form id="formAtividade">
@@ -40,12 +40,11 @@
     </div>
     <button type="submit">Salvar Alterações</button>
     </form>
-    <button id="fechar-modal" class="fechar-modal">
-    Cancelar
-    </button>
+    <button class="fechar-modal" onclick="fecharModalEditar()">Cancelar</button>
 </div>
 </div>
 
+<!-- Modal de deletar atividade -->
 <div id="modal-deletar" class="modal hidden">
 <div class="modal-content">
     <span class="close">&times;</span>
