@@ -1,0 +1,455 @@
+:root {
+  --rosa-principal: #c2185b;
+  --rosa-escuro: #ad1457;
+  --roxo-principal: #8e24aa;
+  --roxo-escuro: #6a1b9a;
+  --destaque-amarelo: #fbc02d;
+  --destaque-vermelho: #e53935;
+  --destaque-verde: #43a047;
+  --fundo-gradiente: linear-gradient(135deg, #f9c5d1, #fbc2eb);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--fundo-gradiente);
+  min-height: 100vh;
+}
+
+/* ========== COMPONENTES COMUNS ========== */
+
+h2 {
+  color: var(--rosa-principal);
+  margin-bottom: 1.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input,
+textarea,
+.status-dropdown {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+input:focus,
+textarea:focus,
+.status-dropdown:focus {
+  border-color: var(--rosa-principal);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(194, 24, 91, 0.2);
+}
+
+button {
+  background-color: var(--rosa-principal);
+  color: white;
+  border: none;
+  padding: 0.9rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  color: white;
+  background-color: var(--rosa-escuro);
+}
+
+p {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+a {
+  color: var(--rosa-principal);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ========== LOGIN / REGISTER ========== */
+
+.login-container,
+.register-container {
+  background-color: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+  margin: 5vh auto;
+  text-align: center;
+}
+
+/* ========== LAYOUT PRINCIPAL ========== */
+
+.top-bar {
+  background-color: var(--rosa-principal);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-size: 1rem;
+}
+
+.top-bar a,
+.top-bar button {
+  color: white;
+  margin-left: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.main-container {
+  padding: 2rem;
+}
+
+/* ========== AÇÕES ========== */
+
+.actions {
+  margin-bottom: 1.5rem;
+  text-align: right;
+}
+
+#btnNovaAtividade {
+  background-color: var(--rosa-principal);
+  color: white;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+#btnNovaAtividade:hover {
+  background-color: var(--rosa-escuro);
+}
+
+/* ========== MODAL BASE ========== */
+
+.modal {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+  display: flex; /* Mantém visível por padrão, só se esconde com .hidden */
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: black;
+}
+
+.btn-confirmar,
+.btn-editar,
+.btn-deletar,
+.btn-concluir,
+.btn-cancelar {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: white;
+}
+
+.btn-confirmar { background-color: var(--rosa-principal); }
+.btn-editar    { background-color: #2196F3; }
+.btn-deletar   { background-color: var(--destaque-vermelho); }
+.btn-concluir  { background-color: #4CAF50; }
+.btn-cancelar  { background-color: #ccc; color: black; }
+
+/* ========== MODAL ESPECÍFICO: DELETAR ========== */
+
+#modal-deletar .modal-content {
+  padding: 2rem;
+  border-radius: 15px;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+}
+
+#modal-deletar h2 {
+  color: var(--rosa-escuro);
+  margin-bottom: 1rem;
+}
+
+#modal-deletar p {
+  color: #555;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+#modal-deletar .close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+}
+
+#modal-deletar .modal-actions {
+  justify-content: center;
+}
+
+#modal-deletar .btn-confirmar:hover {
+  background-color: #c62828;
+}
+
+#modal-deletar .btn-cancelar {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+#modal-deletar .btn-cancelar:hover {
+  background-color: #ddd;
+}
+
+/* ========== TAREFAS ========== */
+
+.card-tarefa {
+  background: white;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-tarefa h3 {
+  margin-top: 0;
+  color: #444;
+}
+
+.card-separator {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 10px 0;
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8em;
+  color: #666;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.card-tarefa.atrasada {
+  border-left: 4px solid #ff5252;
+  background-color: #fff5f5;
+}
+
+.status-atraso {
+  color: #ff5252;
+  font-weight: bold;
+  padding: 2px 5px;
+  background-color: #ffebee;
+  border-radius: 3px;
+}
+
+#concluido .card-tarefa {
+  opacity: 0.8;
+  border-left: 4px solid #4caf50;
+}
+
+#concluido .card-tarefa h3 {
+  text-decoration: line-through;
+  color: #777;
+}
+
+/* ========== KANBAN ========== */
+
+.kanban-board {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.column {
+  flex: 1;
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.column h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+/* ========== FILTRO DE STATUS ========== */
+
+.status-filter {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-dropdown {
+  background-color: white;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+
+.status-dropdown:hover {
+  border-color: #888;
+}
+
+/* ========== RESPONSIVO ========== */
+
+@media (max-width: 600px) {
+  .top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .top-bar a,
+  .top-bar button {
+    margin: 0.5rem 0 0;
+  }
+
+  .main-container {
+    padding: 1rem;
+  }
+
+  .atividade-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+/* ========== BOTÃO FLUTUANTE ========== */
+
+.fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  background-color: var(--roxo-principal);
+  color: white;
+  font-size: 2rem;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s;
+}
+
+.fab:hover {
+  background-color: var(--roxo-escuro);
+}
+
+/* ========== CRÉDITOS ========== */
+
+.creditos-container {
+  background-color: white;
+  margin: 3rem auto;
+  padding: 2rem 2.5rem;
+  border-radius: 20px;
+  max-width: 600px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.creditos-container h1 {
+  color: var(--rosa-principal);
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.creditos-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.creditos-container li {
+  font-size: 1.1rem;
+  color: #444;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.creditos-container li:last-child {
+  border-bottom: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

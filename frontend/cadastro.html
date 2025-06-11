@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Cadastro de Usuário</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <div class="register-container">
+    <h2>Criar Conta</h2>
+    <form id="registerForm">
+      <input type="text" id="first_name" placeholder="Nome" required />
+      <input type="text" id="last_name" placeholder="Sobrenome" required />
+      <input type="date" id="birth_date" required />
+      <input type="text" id="username" placeholder="Login" required />
+      <input type="password" id="password" placeholder="Senha" required />
+      <button type="submit">Cadastrar</button>
+    </form>
+    <p>Já possui conta? <a href="login.html">Voltar ao Login</a></p>
+  </div>
+
+  <script src="js/register.js"></script>
+</body>
+
+</html>

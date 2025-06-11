@@ -39,10 +39,6 @@ function updateTaskService($taskId, $data, $userId)
 
     require_once __DIR__ . '/../helpers/taskValidator.php';
 
-    $dueDate = new DateTime($data['due_date']);
-    $today = new DateTime();
-
-    if (($existingTask['due_date'] != $dueDate) && ($dueDate < $today)) throw new Exception ("A data de conclusão deve estar em um formato válido (YYYY-MM-DD) e não pode ser anterior à data atual.", 400);
 
     $updated = updateTaskRepository($taskId, $data);
 
