@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  const container = document.getElementById("cardsContainer");
+  const toDoContainer = document.getElementById("toDoContainer");
+  const doingContainer = document.getElementById("doingContainer");
+  const doneContainer = document.getElementById("doneContainer");
   const token = localStorage.getItem("token");
 
   const res = await fetch("http://localhost/backend/atividades.php", {
@@ -7,7 +9,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   const atividades = await res.json();
-  container.innerHTML = "";
+  console.log(atividades);
+  // Limpa os containers antes de adicionar os cards
+  toDoContainer.innerHTML = "";
+  doingContainer.innerHTML = "";
+  doneContainer.innerHTML = "";
 
   atividades.forEach(atividade => {
     const card = document.createElement("div");
@@ -23,10 +29,24 @@ document.addEventListener("DOMContentLoaded", async () => {
       <h3>${atividade.title}</h3>
       <p>${atividade.description}</p>
       <p class="meta">Prazo: ${dueDate.toLocaleDateString()}</p>
-      <p class="meta">Status: ${atividade.status === 'open' ? 'Em aberto' : 'Concluída'}</p>
+      <p class="meta">Status: ${atividade.status}</p>
     `;
 
-    container.appendChild(card);
+    // Direciona o card para a coluna correspondente
+    switch (atividade.status) {
+      case "todo":
+        toDoContainer.appendChild(card);
+        break;
+      case "doing":
+        doingContainer.appendChild(card);
+        break;
+      case "done":
+        doneContainer.appendChild(card);
+        break;
+      default:
+        toDoContainer.appendChild(card);
+        break;
+    }
   });
 });
 
@@ -52,6 +72,7 @@ document.getElementById("formAtividade").addEventListener("submit", async (e) =>
     title: form.title.value,
     description: form.description.value,
     due_date: form.due_date.value,
+    status: form.status.value // <-- Aqui está o novo campo
   };
 
   const res = await fetch("http://localhost/backend/atividades.php", {

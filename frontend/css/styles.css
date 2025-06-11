@@ -92,23 +92,23 @@ a:hover {
 .top-bar {
   background-color: var(--rosa-principal);
   color: white;
-  padding: 0.5rem 1.5rem; /* menos padding vertical para ser menor */
+  padding: 1rem; /* menos padding vertical para ser menor */
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* sombra leve para separar do conteúdo */
-  font-size: 1rem; /* fonte um pouco menor */
+  font-size: 0.5rem; /* fonte um pouco menor */
 }
 
 .top-bar a,
 .top-bar button {
   color: white;
-  margin-left: 1rem;
+  margin-left: 2rem;
   background: none;
   border: none;
   cursor: pointer;
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 
@@ -189,19 +189,47 @@ a:hover {
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 1rem;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.cardsContainer {
+  display: flex; 
+  gap: 20px; 
+  justify-content: space-between;
+}
+
+.TableCard {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+ }
+
+.TableCardToDo,
+.TableCardDoing, 
+.TableCardDone  {
+  flex: 1;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  padding: 15px;
+  min-height: 300px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .card {
   background-color: white;
   padding: 1rem;
+  margin: 15px;
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-left: 5px solid #c2185b;
+  border-left: 15px solid #c2185b;
 }
 
 .card.atrasada {
@@ -326,5 +354,12 @@ a:hover {
 }
 
 .fechar-modal:hover {
-    color: white;
+  color: white;
+}
+
+.status {
+  padding: 0.7rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem; 
 }

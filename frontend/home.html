@@ -15,26 +15,68 @@
   </header>
 
   <main>
-    <!-- Botão flutuante -->
-    <button id="btnNovaAtividade" class="fab" onclick="abrirModal()">+</button>
-
-    <!-- Modal de nova atividade -->
-    <div id="modalAtividade" class="modal hidden">
-    <div class="modal-content">
-        <h2>Nova Atividade</h2>
-        <form id="formAtividade">
-        <input type="text" name="title" placeholder="Título" required />
-        <textarea name="description" placeholder="Descrição"></textarea>
-        <input type="date" name="due_date" required />
-        <button type="submit">Salvar</button>
-        </form>
-        <button class="fechar-modal" onclick="fecharModal()">Cancelar</button>
-    </div>
-    </div>
 
     <div id="cardsContainer" class="cards">
-      <!-- Cards de atividades serão inseridos aqui -->
-    </div>
+  <!-- Coluna A Fazer -->
+  <div class="TableCardToDo">
+    <h2>A Fazer</h2>
+    <div id="toDoContainer" class="column">
+    
+  <!-- COLOQUEI APENAS PARA VISUALIZAR AS SAÍDAS REMOVER DEPOIS!!! -->
+    <div class="card">
+    <h3>Estudar JavaScript</h3>
+    <p>Revisar funções assíncronas e promises.</p>
+    <p class="meta">Prazo: 10/06/2025</p>
+    <p class="meta">Status: todo</p>
+  </div>
+
+  <!-- COLOQUEI APENAS PARA VISUALIZAR AS SAÍDAS REMOVER DEPOIS!!! -->
+  <div class="card atrasada">
+    <h3>Entregar Atividade</h3>
+    <p>Enviar o trabalho final para o professor.</p>
+    <p class="meta">Prazo: 01/06/2025</p>
+    <p class="meta">Status: open</p>
+  </div>
+  </div>
+  </div>
+
+  <!-- Coluna Fazendo -->
+  <div class="TableCardDoing">
+    <h2>Fazendo</h2>
+    <div id="doingContainer" class="column"></div>
+  </div>
+
+  <!-- Coluna Terminado -->
+  <div class="TableCardDone">
+    <h2>Terminado</h2>
+    <div id="doneContainer" class="column"></div>
+  </div>
+</div>
+  
+  <!-- Botão flutuante -->
+    <button id="btnNovaAtividade" class="fab" onclick="abrirModal()">+</button>
+
+  <!-- Modal de nova atividade -->
+<div id="modalAtividade" class="modal hidden">
+  <div class="modal-content">
+    <h2>Nova Atividade</h2>
+    <form id="formAtividade">
+      <input type="text" name="title" placeholder="Título" required />
+      <textarea name="description" placeholder="Descrição"></textarea>
+      <input type="date" name="due_date" required />
+      
+      <!-- Campo status adicionado -->
+      <select class="status" name="status" required>
+        <option value="todo">A Fazer</option>
+        <option value="doing">Fazendo</option>
+        <option value="done">Terminado</option>
+      </select>
+      
+      <button type="submit">Salvar</button>
+    </form>
+    <button class="fechar-modal" onclick="fecharModal()">Cancelar</button>
+  </div>
+</div>
   </main>
 
   <script src="js/home.js"></script>
