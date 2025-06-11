@@ -2,100 +2,20 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <title>Minhas Atividades</title>
+    <title>Gestor de Atividades</title>
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
     <header class="top-bar">
-      <h1>Minhas Atividades</h1>
+      <h1>Gestor de Atividades</h1>
       <div class="menu">
-        <a href="creditos.html">Créditos</a>
-        <button onclick="logout()">Logout</button>
+        <a href="#" id="linkHome">Home</a>
+        <a href="#" id="linkCreditos">Créditos</a>
+        <a href="#" onclick="logout()">Logout</a>
       </div>
     </header>
 
-    <main>
-      <!-- Botão flutuante -->
-      <button id="btnNovaAtividade" class="fab" onclick="abrirModal()">
-        +
-      </button>
-
-      <!-- Modal de nova atividade -->
-      <div id="modalAtividade" class="modal hidden">
-        <div class="modal-content">
-          <h2>Nova Atividade</h2>
-          <form id="formAtividade">
-            <input type="text" name="title" placeholder="Título" required />
-            <textarea name="description" placeholder="Descrição"></textarea>
-            <input type="date" name="due_date" required />
-            <button type="submit">Salvar</button>
-          </form>
-          <button class="fechar-modal" onclick="fecharModal()">Cancelar</button>
-        </div>
-      </div>
-
-      <!-- Modal de edição de atividade -->
-      <div id="modal-editar" class="modal hidden">
-        <div class="modal-content">
-          <h2>Editar Atividade</h2>
-          <form id="formEditar">
-            <input type="hidden" id="editar-id" />
-            <input
-              type="text"
-              id="editar-titulo"
-              placeholder="Título"
-              required
-            />
-            <textarea id="editar-descricao" placeholder="Descrição"></textarea>
-            <input type="date" id="editar-prazo" required />
-            <div class="status-filter">
-              <label for="status-select">Status</label>
-              <select id="editar-status" class="status-dropdown">
-                <option value="open">Pendente</option>
-                <option value="completed">Concluído</option>
-              </select>
-            </div>
-            <button type="submit">Salvar Alterações</button>
-          </form>
-          <button id="fechar-modal" class="fechar-modal">
-            Cancelar
-          </button>
-        </div>
-      </div>
-
-      <div id="modal-deletar" class="modal hidden">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2>Confirmar Exclusão</h2>
-          <p>Tem certeza que deseja excluir esta tarefa?</p>
-          <div class="modal-actions">
-            <button id="confirmar-delecao" class="btn-confirmar">
-              Sim, Excluir
-            </button>
-            <button id="cancelar-delecao" class="btn-cancelar">Cancelar</button>
-          </div>
-        </div>
-      </div>
-
-      <div id="cardsContainer" class="cards">
-        <!-- Cards de atividades serão inseridos aqui -->
-        <div class="kanban-board">
-          <div class="column">
-            <h2>Atrasado</h2>
-            <div id="atrasado"></div>
-          </div>
-
-          <div class="column">
-            <h2>Aberto</h2>
-            <div id="aberto"></div>
-          </div>
-
-          <div class="column">
-            <h2>Concluídas</h2>
-            <div id="concluido"></div>
-          </div>
-        </div>
-      </div>
+    <main id="conteudo-principal">
     </main>
 
     <script src="js/home.js"></script>
