@@ -44,7 +44,7 @@ function handle_request()
 
     $method = $_SERVER['REQUEST_METHOD'];
     $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    $uri = substr($uri, strlen("/gestor_de_atividades/backend"));
+    $uri = substr($uri, strlen("/trabalhoPHP/gestor_de_atividades/backend"));
     $uri = trim($uri, '/');
 
     if (isset($routes[$uri])) {

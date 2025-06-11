@@ -139,84 +139,230 @@ a:hover {
 
 /* =================== LISTA DE ATIVIDADES =================== */
 
-.atividade-lista {
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 5px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-confirmar {
+    background-color: #f44336;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-cancelar {
+    background-color: #ccc;
+    color: black;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: black;
+} 
+
+
+/* Estilos para o modal de edição */
+#modal-editar .modal-content {
+  max-width: 500px;
+}
+
+#modal-editar textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+
+/* Estilos para o modal de deleção */
+#modal-deletar .modal-content {
+  max-width: 400px;
+}
+
+.modal-actions {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-.atividade-item {
-  background-color: white;
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  border-left: 5px solid var(--rosa-principal);
-}
-
-.atividade-item.atrasada {
-  border-left-color: red;
-  background-color: #ffe5e5;
-}
-
-.atividade-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.atividade-actions button {
-  margin-left: 0.5rem;
-  padding: 0.3rem 0.6rem;
-  font-size: 0.9rem;
-  cursor: pointer;
+.btn-confirmar {
+  background-color: #f44336;
+  color: white;
+  padding: 8px 16px;
   border: none;
-  border-radius: 8px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.atividade-actions .edit {
-  background-color: var(--destaque-amarelo);
+.btn-cancelar {
+  background-color: #ccc;
+  color: black;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.atividade-actions .delete {
-  background-color: var(--destaque-vermelho);
-  color: white;
+.card-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
 }
 
-.atividade-actions .done {
-  background-color: var(--destaque-verde);
-  color: white;
+.card-actions button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
 }
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1rem;
+.btn-editar {
+    background-color: #2196F3;
+    color: white;
 }
 
-.card {
-  background-color: white;
-  padding: 1rem;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border-left: 5px solid #c2185b;
+.btn-deletar {
+    background-color: #f44336;
+    color: white;
 }
 
-.card.atrasada {
-  border-left-color: red;
-  background-color: #fff1f1;
+.btn-concluir {
+    background-color: #4CAF50;
+    color: white;
 }
 
-.card h3 {
-  margin-top: 0;
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
 }
 
-.card .meta {
-  font-size: 0.85rem;
-  color: #666;
-  margin-top: 0.5rem;
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.card-tarefa.atrasada {
+    border-left: 4px solid #ff5252;
+    background-color: #fff5f5;
+}
+
+.status-atraso {
+    color: #ff5252;
+    font-weight: bold;
+    padding: 2px 5px;
+    background-color: #ffebee;
+    border-radius: 3px;
+}
+
+
+#concluido .card-tarefa {
+    opacity: 0.8;
+    border-left: 4px solid #4caf50;
+}
+
+#concluido .card-tarefa h3 {
+    text-decoration: line-through;
+    color: #777;
+}
+
+.kanban-board {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.column {
+    flex: 1;
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.column h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.card-tarefa {
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card-tarefa h3 {
+    margin-top: 0;
+    color: #444;
+}
+
+.card-separator {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 10px 0;
+}
+
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8em;
+    color: #666;
 }
 
 /* =================== RESPONSIVO =================== */
@@ -280,6 +426,32 @@ a:hover {
 
 .modal.hidden {
   display: none;
+}
+
+.status-filter {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-dropdown {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.status-dropdown:hover {
+  border-color: #888;
+}
+
+.status-dropdown:focus {
+  outline: none;
+  border-color: #2196F3;
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
 }
 
 .modal-content {

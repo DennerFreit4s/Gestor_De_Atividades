@@ -1,44 +1,31 @@
-document.getElementById("loginForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const login = document.getElementById("login").value;
-  const senha = document.getElementById("senha").value;
+document.getElementById('loginForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
 
-  const res = await fetch("http://localhost/backend/login.php", {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({login, senha})
-  });
-  const data = await res.json();
+    const username = document.getElementById('login').value;
+    const password = document.getElementById('senha').value;
 
-  if (data.success) {
-    localStorage.setItem("token", data.token);
-    localStorage.setItem("usuario", JSON.stringify(data.usuario));
-    window.location.href = "main.html";
-  } else {
-    alert("Login inválido!");
-  }
-});
+    try {
+        const response = await fetch('http://localhost/trabalhoPHP/gestor_de_atividades/backend/users/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, password }),
+        });
 
-document.getElementById("registerForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const body = {
-    nome: document.getElementById("nome").value,
-    sobrenome: document.getElementById("sobrenome").value,
-    data_nascimento: document.getElementById("data_nascimento").value,
-    login: document.getElementById("novo_login").value,
-    senha: document.getElementById("nova_senha").value
-  };
+        const data = await response.json();
 
-  const res = await fetch("http://localhost/backend/register.php", {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(body)
-  });
+        if (data.error) {
+            alert(`Erro no login: ${data.error}`);
+            return;
+        }
 
-  const data = await res.json();
-  if (data.success) {
-    alert("Usuário cadastrado com sucesso!");
-  } else {
-    alert("Erro ao cadastrar.");
-  }
+        localStorage.setItem('authToken', data.data);
+
+        window.location.href = 'home.html';
+
+    } catch (error) {
+        console.error('Erro:', error);
+        alert('Erro ao conectar com o servidor.');
+    }
 });
