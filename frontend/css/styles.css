@@ -21,18 +21,7 @@ body {
   min-height: 100vh;
 }
 
-/* =================== LOGIN / REGISTER =================== */
-
-.login-container, .register-container {
-  background-color: #fff;
-  padding: 2rem 2.5rem;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  width: 90%;
-  max-width: 400px;
-  margin: 5vh auto;
-  text-align: center;
-}
+/* ========== COMPONENTES COMUNS ========== */
 
 h2 {
   color: var(--rosa-principal);
@@ -45,16 +34,21 @@ form {
   gap: 1rem;
 }
 
-input {
+input,
+textarea,
+.status-dropdown {
   padding: 0.8rem;
   border: 1px solid #ddd;
   border-radius: 10px;
   font-size: 1rem;
 }
 
-input:focus {
+input:focus,
+textarea:focus,
+.status-dropdown:focus {
   border-color: var(--rosa-principal);
   outline: none;
+  box-shadow: 0 0 0 2px rgba(194, 24, 91, 0.2);
 }
 
 button {
@@ -69,6 +63,7 @@ button {
 }
 
 button:hover {
+  color: white;
   background-color: var(--rosa-escuro);
 }
 
@@ -87,17 +82,31 @@ a:hover {
   text-decoration: underline;
 }
 
-/* =================== LAYOUT PRINCIPAL =================== */
+/* ========== LOGIN / REGISTER ========== */
+
+.login-container,
+.register-container {
+  background-color: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+  margin: 5vh auto;
+  text-align: center;
+}
+
+/* ========== LAYOUT PRINCIPAL ========== */
 
 .top-bar {
   background-color: var(--rosa-principal);
   color: white;
-  padding: 0.5rem 1.5rem; /* menos padding vertical para ser menor */
+  padding: 0.5rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* sombra leve para separar do conteúdo */
-  font-size: 1rem; /* fonte um pouco menor */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-size: 1rem;
 }
 
 .top-bar a,
@@ -111,12 +120,11 @@ a:hover {
   font-size: 0.9rem;
 }
 
-
 .main-container {
   padding: 2rem;
 }
 
-/* =================== AÇÕES E BOTÕES =================== */
+/* ========== AÇÕES ========== */
 
 .actions {
   margin-bottom: 1.5rem;
@@ -134,85 +142,42 @@ a:hover {
 }
 
 #btnNovaAtividade:hover {
-  background-color: #a9154f
+  background-color: var(--rosa-escuro);
 }
 
-/* =================== LISTA DE ATIVIDADES =================== */
-
+/* ========== MODAL BASE ========== */
 
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.4);
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+  display: flex; /* Mantém visível por padrão, só se esconde com .hidden */
+}
+
+.modal.hidden {
+  display: none;
 }
 
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
-    border-radius: 5px;
-}
-
-.modal-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.btn-confirmar {
-    background-color: #f44336;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.btn-cancelar {
-    background-color: #ccc;
-    color: black;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close:hover {
-    color: black;
-} 
-
-
-/* Estilos para o modal de edição */
-#modal-editar .modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 90%;
   max-width: 500px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
 }
 
-#modal-editar textarea {
-  min-height: 100px;
-  resize: vertical;
-}
-
-
-/* Estilos para o modal de deleção */
-#modal-deletar .modal-content {
-  max-width: 400px;
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .modal-actions {
@@ -222,150 +187,180 @@ a:hover {
   margin-top: 20px;
 }
 
-.btn-confirmar {
-  background-color: #f44336;
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.btn-cancelar {
-  background-color: #ccc;
-  color: black;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.card-actions {
-    display: flex;
-    gap: 8px;
-    margin-top: 10px;
-}
-
-.card-actions button {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.8rem;
-}
-
-.btn-editar {
-    background-color: #2196F3;
-    color: white;
-}
-
-.btn-deletar {
-    background-color: #f44336;
-    color: white;
-}
-
-.btn-concluir {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.4);
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
-}
-
 .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.card-tarefa.atrasada {
-    border-left: 4px solid #ff5252;
-    background-color: #fff5f5;
+.close:hover {
+  color: black;
 }
 
-.status-atraso {
-    color: #ff5252;
-    font-weight: bold;
-    padding: 2px 5px;
-    background-color: #ffebee;
-    border-radius: 3px;
+.btn-confirmar,
+.btn-editar,
+.btn-deletar,
+.btn-concluir,
+.btn-cancelar {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: white;
 }
 
+.btn-confirmar { background-color: var(--rosa-principal); }
+.btn-editar    { background-color: #2196F3; }
+.btn-deletar   { background-color: var(--destaque-vermelho); }
+.btn-concluir  { background-color: #4CAF50; }
+.btn-cancelar  { background-color: #ccc; color: black; }
 
-#concluido .card-tarefa {
-    opacity: 0.8;
-    border-left: 4px solid #4caf50;
+/* ========== MODAL ESPECÍFICO: DELETAR ========== */
+
+#modal-deletar .modal-content {
+  padding: 2rem;
+  border-radius: 15px;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
 }
 
-#concluido .card-tarefa h3 {
-    text-decoration: line-through;
-    color: #777;
+#modal-deletar h2 {
+  color: var(--rosa-escuro);
+  margin-bottom: 1rem;
 }
 
-.kanban-board {
-    display: flex;
-    gap: 20px;
-    padding: 20px;
+#modal-deletar p {
+  color: #555;
+  margin-bottom: 2rem;
+  font-size: 1rem;
 }
 
-.column {
-    flex: 1;
-    background: #f5f5f5;
-    padding: 15px;
-    border-radius: 5px;
+#modal-deletar .close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
 }
 
-.column h2 {
-    margin-top: 0;
-    color: #333;
+#modal-deletar .modal-actions {
+  justify-content: center;
 }
+
+#modal-deletar .btn-confirmar:hover {
+  background-color: #c62828;
+}
+
+#modal-deletar .btn-cancelar {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+#modal-deletar .btn-cancelar:hover {
+  background-color: #ddd;
+}
+
+/* ========== TAREFAS ========== */
 
 .card-tarefa {
-    background: white;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background: white;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .card-tarefa h3 {
-    margin-top: 0;
-    color: #444;
+  margin-top: 0;
+  color: #444;
 }
 
 .card-separator {
-    border: none;
-    border-top: 1px solid #eee;
-    margin: 10px 0;
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 10px 0;
 }
 
 .card-meta {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.8em;
-    color: #666;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8em;
+  color: #666;
 }
 
-/* =================== RESPONSIVO =================== */
+.card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.card-tarefa.atrasada {
+  border-left: 4px solid #ff5252;
+  background-color: #fff5f5;
+}
+
+.status-atraso {
+  color: #ff5252;
+  font-weight: bold;
+  padding: 2px 5px;
+  background-color: #ffebee;
+  border-radius: 3px;
+}
+
+#concluido .card-tarefa {
+  opacity: 0.8;
+  border-left: 4px solid #4caf50;
+}
+
+#concluido .card-tarefa h3 {
+  text-decoration: line-through;
+  color: #777;
+}
+
+/* ========== KANBAN ========== */
+
+.kanban-board {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.column {
+  flex: 1;
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.column h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+/* ========== FILTRO DE STATUS ========== */
+
+.status-filter {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-dropdown {
+  background-color: white;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+
+.status-dropdown:hover {
+  border-color: #888;
+}
+
+/* ========== RESPONSIVO ========== */
 
 @media (max-width: 600px) {
   .top-bar {
@@ -389,7 +384,8 @@ a:hover {
   }
 }
 
-/* Botão Flutuante */
+/* ========== BOTÃO FLUTUANTE ========== */
+
 .fab {
   position: fixed;
   bottom: 2rem;
@@ -410,96 +406,7 @@ a:hover {
   background-color: var(--roxo-escuro);
 }
 
-/* Modal */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-}
-
-.modal.hidden {
-  display: none;
-}
-
-.status-filter {
-  margin: 20px 0;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.status-dropdown {
-  padding: 8px 12px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  background-color: white;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.status-dropdown:hover {
-  border-color: #888;
-}
-
-.status-dropdown:focus {
-  outline: none;
-  border-color: #2196F3;
-  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
-}
-
-.modal-content {
-  background: white;
-  padding: 2rem;
-  border-radius: 15px;
-  width: 90%;
-  max-width: 400px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  text-align: center;
-}
-
-.modal-content form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.modal-content input,
-.modal-content textarea {
-  padding: 0.7rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 1rem;
-}
-
-.modal-content button[type="submit"] {
-  background-color: var(--rosa-principal);
-  color: white;
-  border: none;
-  padding: 0.8rem;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.fechar-modal {
-  margin-top: 1rem;
-  background: none;
-  border: none;
-  color: #888;
-  cursor: pointer;
-  font-size: 0.9rem;
-}
-
-.fechar-modal:hover {
-    color: white;
-}
+/* ========== CRÉDITOS ========== */
 
 .creditos-container {
   background-color: white;
@@ -537,6 +444,12 @@ a:hover {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
